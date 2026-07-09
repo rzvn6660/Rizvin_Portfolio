@@ -18,12 +18,12 @@ export default function Home() {
       
       <section id="projects" className="section-padding">
         <div className="container">
-          <div className="section-header" style={{ textAlign: 'left', marginBottom: 'var(--space-8)' }}>
+          <div className="section-header">
             <h2 className="section-title">Selected Work</h2>
             <p className="section-subtitle">Systems in production & development.</p>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-4)' }}>
+          <div className="projects-grid">
             {featuredProject && (
               <ProjectCard project={featuredProject} index={0} />
             )}

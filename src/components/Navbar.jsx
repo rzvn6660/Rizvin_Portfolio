@@ -61,7 +61,11 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'open' : ''}`}>
+      <div 
+        className={`mobile-nav-backdrop ${mobileMenuOpen ? 'open' : ''}`}
+        onClick={closeMenu}
+      />
+      <div className={`mobile-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <nav className="mobile-nav">
           <NavLinks />
         </nav>
