@@ -39,8 +39,13 @@ export default function Navbar() {
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
-        <Link to="/" className="logo" onClick={closeMenu}>
-          MR
+        <Link to="/" className="branding-logo" onClick={closeMenu}>
+          <span className="branding-title">Mohammed Rizvin</span>
+          <span className="branding-subtitle">
+            <span style={{ color: 'var(--color-accent-secondary)' }}>AI Engineer</span> 
+            <span className="branding-dot">•</span> 
+            Generative AI · AI Agents · Speech AI · Multimodal
+          </span>
         </Link>
         
         <nav className="desktop-nav">

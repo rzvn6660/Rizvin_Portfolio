@@ -41,21 +41,13 @@ export default function Hero() {
           style={{ flex: 1, paddingRight: '4rem' }}
         >
           
-          <motion.div variants={itemVariants} className="hero-eyebrow text-mono" style={{ marginBottom: '2rem' }}>
-            <span className="eyebrow-text" style={{ color: 'var(--color-accent-secondary)' }}>AI ENGINEER — GENERATIVE AI · LLM AGENTS · SPEECH AI</span>
-            <div className="status-chip" style={{ marginTop: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1rem', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <span className="status-dot-green status-dot pulse"></span>
-              Open to AI/ML Engineer roles — India · UAE
-            </div>
-          </motion.div>
-
-          <motion.h1 variants={itemVariants} className="hero-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', lineHeight: 1.1, marginBottom: '2rem', fontWeight: 600, letterSpacing: '-0.03em' }}>
-            Hi, I'm <span className="text-gradient">Mohammed Rizvin</span>. <br/>
-            I design and ship <span className="text-gradient-primary">AI systems</span>.
+          <motion.h1 variants={itemVariants} className="hero-title" style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', lineHeight: 1.1, marginBottom: '1.5rem', fontWeight: 600, letterSpacing: '-0.03em' }}>
+            Architecting <span className="text-gradient">intelligent systems</span> <br/>
+            and scalable <span className="text-gradient-primary">AI pipelines.</span>
           </motion.h1>
 
           <motion.p variants={itemVariants} className="hero-subtitle" style={{ fontSize: '1.25rem', color: 'var(--color-text-secondary)', maxWidth: '600px', marginBottom: '3rem', lineHeight: 1.6 }}>
-            Building intelligent tools that solve real human problems, from multilingual speech pipelines to LLM-orchestrated agents. Based in UAE, open to roles in India & UAE.
+            Specializing in Large Language Models, autonomous agent orchestration, and multimodal speech recognition. Building robust inference pipelines and driving product innovation from research to production.
           </motion.p>
 
           <motion.div variants={itemVariants} className="hero-cta-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
