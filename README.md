@@ -1,16 +1,17 @@
-# React + Vite
+# Rizvin Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio for Mohammed Rizvin MK, an AI Engineer specializing in voice assistants, NLP, and AI integrations. Built with React and Vite.
 
-Currently, two official plugins are available:
+## Featured Projects
+- **ORMA AI:** Malayalam-native voice assistant for elderly care.
+- **TRIEM:** Multilingual voice assistant for tribal & low-resource languages.
+- **Medi-Fy:** Medicine label information extraction chatbot.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Architecture & System Design
 
-## React Compiler
+Here is the system architecture design used for the Medi-Fy chatbot:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Medi-Fy Architecture Diagram](assets/architecture.png)
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+---
+*Note: If the diagram above is broken, please ensure the image is placed at `assets/architecture.png` in the repository root.*
