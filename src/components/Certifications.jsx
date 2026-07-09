@@ -18,40 +18,42 @@ export default function Certifications() {
           <p className="section-subtitle">Continuous Learning & Upskilling</p>
         </div>
         
-        <div className="certifications-grid" ref={ref} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
+        <div className="certifications-grid" ref={ref}>
           {certifications.map((cert, index) => (
             <div 
               key={cert.id} 
               className={`cert-card glass-panel animate-up ${inView ? 'in-view' : ''}`}
-              style={{ transitionDelay: `${index * 150}ms`, display: 'flex', flexDirection: 'column' }}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="cert-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
-                <div style={{ padding: '1rem', background: 'rgba(0,229,255,0.1)', borderRadius: '12px' }}>
+              <div className="cert-header">
+                <div className="cert-icon-wrapper">
                   <Award size={24} color="var(--color-accent-secondary)" />
                 </div>
                 <div>
-                  <h3 className="cert-title" style={{ margin: '0 0 0.5rem 0', fontSize: '1.2rem', lineHeight: 1.4 }}>{cert.title}</h3>
-                  <div className="cert-meta text-mono" style={{ fontSize: '0.8rem', color: 'var(--color-text-tertiary)', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <h3 className="cert-title">{cert.title}</h3>
+                  <div className="cert-meta text-mono">
                     <span>{cert.issuer} • {cert.date}</span>
                     {cert.credentialId && <span>ID: {cert.credentialId}</span>}
                   </div>
                 </div>
               </div>
               
-              <p className="cert-description" style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, flexGrow: 1, marginBottom: '1.5rem' }}>
+              <p className="cert-description">
                 {cert.description}
               </p>
               
-              <div className="cert-skills" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <div className="cert-skills">
                 {cert.skills.map(skill => (
                   <span key={skill} className="tech-badge">{skill}</span>
                 ))}
               </div>
 
               {cert.link && (
-                <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center', display: 'flex', gap: '0.5rem' }}>
-                  Verify Credential <ExternalLink size={16} />
-                </a>
+                <div className="cert-footer">
+                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost verify-btn">
+                    Verify Credential <ExternalLink size={16} />
+                  </a>
+                </div>
               )}
             </div>
           ))}

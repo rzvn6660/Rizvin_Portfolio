@@ -3,14 +3,14 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 120px; /* 80-120px offset below navbar */
+  padding-top: 120px;
   overflow: hidden;
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: var(--space-48);
   align-items: center;
   z-index: 2;
   width: 100%;
@@ -19,7 +19,7 @@
 @media (min-width: 1024px) {
   .hero-container {
     grid-template-columns: 6fr 5fr;
-    gap: 64px; /* 8px system */
+    gap: var(--space-64);
   }
 }
 
@@ -30,25 +30,25 @@
 }
 
 .hero-title {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem); /* 72px Max */
   line-height: 1.1;
   font-weight: 600;
   letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-24);
 }
 
 .hero-subtitle {
-  font-size: 1.125rem;
+  font-size: 1.125rem; /* 18px */
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 600px; /* Constrain reading width */
-  margin-bottom: 40px;
+  line-height: 1.65;
+  max-width: 600px;
+  margin-bottom: var(--space-48);
 }
 
 .hero-cta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--space-16);
 }
 
 /* Visualization Panel */
@@ -58,7 +58,7 @@
   justify-content: center;
   position: relative;
   height: 500px;
-  transform: translateY(-24px); /* Raise slightly to balance */
+  transform: translateY(-24px);
 }
 
 .neural-network-wrapper {
