@@ -1,0 +1,134 @@
+.section-header {
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-4) 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border-subtle);
+}
+
+@media (min-width: 768px) {
+  .timeline-line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-6);
+  width: 100%;
+  padding-left: 64px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+.timeline-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .timeline-item {
+    width: 50%;
+    padding-left: 0;
+  }
+  
+  .timeline-item.left {
+    padding-right: 48px;
+    text-align: right;
+  }
+  
+  .timeline-item.right {
+    left: 50%;
+    padding-left: 48px;
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 20px;
+  top: 24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  box-shadow: 0 0 10px var(--color-accent-primary);
+}
+
+@media (min-width: 768px) {
+  .timeline-dot {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-content {
+  padding: var(--space-4);
+}
+
+.cert-meta {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .timeline-item.left .cert-meta {
+    justify-content: flex-end;
+  }
+}
+
+.cert-issuer {
+  color: var(--color-accent-secondary);
+}
+
+.cert-date {
+  color: var(--color-text-tertiary);
+}
+
+.cert-title {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-1);
+}
+
+.cert-description {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.cert-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: 0.75rem;
+  color: var(--color-accent-primary);
+  transition: color var(--transition-fast);
+}
+
+.cert-link:hover {
+  color: var(--color-accent-secondary);
+}

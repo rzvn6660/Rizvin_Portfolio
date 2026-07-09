@@ -1,0 +1,31 @@
+.skill-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .skill-strip {
+    justify-content: center;
+  }
+}
+
+.skill-chip {
+  padding: 8px 16px;
+  border-radius: 100px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+.skill-strip.in-view .skill-chip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-chip:hover {
+  border-color: var(--color-accent-primary);
+  background: var(--color-bg-surface-hover);
+  color: #fff;
+}
