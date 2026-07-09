@@ -79,7 +79,7 @@ export const projects = [
     problem: 'Elderly individuals and visually impaired people often have difficulty reading printed medicine labels, making vital information like dosage, usage, and side effects inaccessible.',
     research: 'Evaluated image preprocessing techniques and various OCR tools before selecting Pytesseract for extraction and OpenCV/PIL for noise reduction to improve text detection clarity.',
     architectureDescription: '1. Image Upload via Gradio UI. 2. Image Preprocessing (grayscale conversion, noise reduction via OpenCV). 3. OCR Extraction (Pytesseract). 4. NLP-based cleaning and filtering. 5. Data Retrieval from OpenFDA API or Local Dataset fallback. 6. Results formatting and UI display.',
-    architectureImage: '/medify-architecture.jpg',
+    architectureImage: '/medify-architecture.png',
     engineeringDecisions: [
       {
         title: 'Local Dataset Fallback',
