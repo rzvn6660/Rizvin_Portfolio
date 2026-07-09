@@ -1,38 +1,32 @@
 export const certifications = [
   {
     id: 1,
-    title: "Google Cloud Generative AI",
-    issuer: "Google Cloud",
-    date: "2026",
-    description: "Foundational and advanced concepts in generative AI on Google Cloud.",
+    title: 'One Million Prompters – Certificate of Completion',
+    issuer: 'Dubai Future Foundation',
+    date: 'July 2026',
+    credentialId: null,
+    description: "Successfully completed the One Million Prompters initiative by Dubai Future Foundation, developing practical skills in prompt engineering, effective interaction with AI systems, and responsible use of generative AI technologies as part of Dubai's AI talent development initiative.",
+    skills: ['Prompt Engineering', 'Generative AI', 'AI Interaction', 'Responsible AI', 'AI Productivity'],
+    link: 'https://omp.dub.ai/certificate/nhUiRLD3N970'
   },
   {
     id: 2,
-    title: "Anthropic AI Fluency",
-    issuer: "Anthropic",
-    date: "2026",
-    description: "Deep dive into capabilities, safety, and application of Claude and LLMs.",
-  },
-  {
-    id: 5,
-    title: "One Million Prompters — AI Prompt Engineering",
-    issuer: "Dubai Centre for AI",
-    date: "2026",
-    description: "Completed Dubai's global AI Prompt Literacy and Prompt Engineering program — covering AI/Generative AI fundamentals, applied prompt techniques, AI-powered productivity, and creative AI applications.",
-    link: "https://dub.ai/en/omp/"
+    title: 'Introduction to Generative AI',
+    issuer: 'Google',
+    date: 'May 2026',
+    credentialId: '24249365',
+    description: "Completed Google's Introduction to Generative AI course, covering the fundamentals of generative AI, large language models, and practical AI applications.",
+    skills: ['Generative AI', 'AI Fundamentals'],
+    link: 'https://www.skills.google/public_profiles/b0352ff1-ca3e-45fd-9a55-d2b835cd4ec2/badges/24249365?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share'
   },
   {
     id: 3,
-    title: "AI & Data Science Internship",
-    issuer: "STEM Robotics",
-    date: "June 2024",
-    description: "Hands-on engineering in AI systems and data science workflows.",
-  },
-  {
-    id: 4,
-    title: "Robotics & Automation Training",
-    issuer: "Retechnox",
-    date: "June 2025",
-    description: "Online theoretical training covering robotics fundamentals and automation.",
+    title: 'AI Fluency Framework & Foundations – Certificate of Completion',
+    issuer: 'Anthropic',
+    date: 'June 2026',
+    credentialId: 'c9q8goyfny6m',
+    description: "Completed Anthropic's AI Fluency Framework & Foundations program, covering responsible AI usage, prompt engineering fundamentals, AI collaboration, and effective interaction with large language models.",
+    skills: ['Prompt Engineering', 'Responsible AI', 'AI Fluency', 'Large Language Models'],
+    link: 'https://verify.skilljar.com/c/c9q8goyfny6m'
   }
 ];

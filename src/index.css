@@ -185,6 +185,16 @@ button {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent-secondary);
+  border: 1px solid var(--color-accent-secondary);
+}
+.btn-secondary:hover {
+  background: rgba(0, 229, 255, 0.1);
+  transform: translateY(-2px);
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--color-text-primary);

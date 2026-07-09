@@ -25,18 +25,27 @@ export default function Hero() {
           </div>
 
           <h1 className={`hero-title ${mounted ? 'animate-up' : ''}`} style={{ transitionDelay: '200ms' }}>
-            I design and ship <span className="text-gradient">AI systems</span> — from multilingual speech pipelines to LLM-orchestrated agents.
+            Hi, I'm <span className="text-gradient">Mohammed Rizvin</span>. <br/>
+            I design and ship AI systems.
           </h1>
 
           <p className={`hero-subtitle ${mounted ? 'animate-up' : ''}`} style={{ transitionDelay: '300ms' }}>
-            Building tools that solve real human problems across healthcare accessibility and low-resource languages. Currently seeking Junior AI/ML roles in India and the UAE.
+            Building intelligent tools that solve real human problems, from multilingual speech pipelines to LLM-orchestrated agents. Based in UAE, open to roles in India & UAE.
           </p>
 
-          <div className={`hero-cta-row ${mounted ? 'animate-up' : ''}`} style={{ transitionDelay: '400ms' }}>
+          <div className={`hero-cta-row ${mounted ? 'animate-up' : ''}`} style={{ transitionDelay: '400ms', flexWrap: 'wrap', gap: '1rem' }}>
             <a href="#featured-project" className="btn btn-primary">View Projects</a>
-            <a href="/resume" className="btn btn-ghost">
+            <a href="#contact" className="btn btn-secondary">Contact Me</a>
+            <a href="/resume?region=india" className="btn btn-ghost">
               <Download size={18} />
-              Download Résumé
+              Resume (India)
+            </a>
+            <a href="/resume?region=uae" className="btn btn-ghost">
+              <Download size={18} />
+              Resume (UAE)
+            </a>
+            <a href="#certifications" className="btn btn-ghost">
+              Certifications
             </a>
           </div>
 
