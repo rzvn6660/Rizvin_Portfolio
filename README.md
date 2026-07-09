@@ -11,7 +11,7 @@ Personal portfolio for Mohammed Rizvin MK, an AI Engineer specializing in voice 
 
 Here is the system architecture design used for the Medi-Fy chatbot:
 
-![Medi-Fy Architecture Diagram](assets/architecture.png)
+![Medi-Fy Architecture Diagram](public/medify-architecture.png)
 
 ---
-*Note: If the diagram above is broken, please ensure the image is placed at `assets/architecture.png` in the repository root.*
+*Note: If the diagram above is broken, please ensure the image is placed at `public/medify-architecture.png` in the repository root.*
