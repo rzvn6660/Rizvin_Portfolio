@@ -18,8 +18,9 @@ export const projects = [
       { label: 'Emotion Recognition', status: 'Planned' }
     ],
     problem: 'Elderly individuals in Kerala face isolation and difficulty managing health routines due to technology barriers. Most voice assistants lack robust native Malayalam support and are not tailored for geriatric accessibility (medicine reminders, emergency detection). Without native-language tools, they lose independence.',
-    research: 'Evaluated mainstream ASR solutions (Whisper, Google Cloud Speech) vs Indic models. Mainstream models struggle with Malayalam dialectal nuances and latency. Decided to build around specialized low-resource models to ensure accurate voice recognition for elderly speakers.',
-    architectureDescription: 'The system flows through a multi-stage pipeline: Audio capture -> Voice Activity Detection -> ASR -> NMT (if pivot needed) -> LLM Reasoning -> NMT -> TTS. A local caching layer manages scheduled reminders securely.',
+    research: 'Evaluated on-device models vs API-driven architectures. A key finding was that elderly users require near-zero latency for trust, pushing the design toward edge-capable components and aggressive caching.',
+    architectureDescription: '1. Voice Input -> 2. Audio Preprocessing -> 3. Whisper STT -> 4. Memory Retrieval -> 5. Llama 3 Processing -> 6. Translation Layer -> 7. Response Generation -> 8. Text-to-Speech -> 9. Memory Update -> 10. Reminder System -> 11. Emergency Detection -> 12. Caregiver Dashboard.',
+    architectureImage: '/orma-architecture.png',
     engineeringDecisions: [
       {
         title: 'Choice of ASR',
