@@ -3,13 +3,13 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 120px;
+  padding-top: 96px;
   overflow: hidden;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 641px) {
   .hero-section {
-    padding-top: 96px;
+    padding-top: 120px;
   }
 }
 
@@ -33,17 +33,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
   .hero-content {
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: flex-start;
   }
 }
 
 .hero-title {
-  font-size: clamp(2.625rem, 8vw, 4.5rem); /* 42px to 72px Max */
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   line-height: 1.1;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -51,36 +53,34 @@
 }
 
 .hero-subtitle {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
   color: var(--color-text-secondary);
   line-height: 1.65;
   max-width: 600px;
   margin-bottom: var(--space-48);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1024px) {
   .hero-subtitle {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
 .hero-cta-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
   gap: var(--space-16);
+  justify-content: center;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 641px) {
   .hero-cta-row {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-cta-row {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    width: auto;
   }
 }
 
@@ -90,20 +90,19 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 500px;
-  transform: translateY(-24px);
+  height: 320px;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 641px) {
   .hero-visual {
     height: 400px;
-    transform: translateY(0);
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1024px) {
   .hero-visual {
-    height: 320px;
+    height: 500px;
+    transform: translateY(-24px);
   }
 }
 

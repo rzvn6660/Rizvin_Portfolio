@@ -18,41 +18,45 @@ const nodesData = {
   Response: { label: 'Response', type: 'pipeline' }
 };
 
-const getGraphLayout = (width, height) => ({
-  MR: { x: width/2, y: height/2, opacity: 1 },
-  LLMs: { x: width/2 - 120, y: height/2 - 100, opacity: 1 },
-  Agents: { x: width/2 + 120, y: height/2 - 100, opacity: 1 },
-  Speech: { x: width/2 - 140, y: height/2 + 60, opacity: 1 },
-  OCR: { x: width/2 + 140, y: height/2 + 60, opacity: 1 },
-  FastAPI: { x: width/2 - 60, y: height/2 - 180, opacity: 1 },
-  Python: { x: width/2 + 60, y: height/2 - 180, opacity: 1 },
-  Docker: { x: width/2 - 80, y: height/2 + 160, opacity: 1 },
-  React: { x: width/2 + 80, y: height/2 + 160, opacity: 1 },
-  GitHub: { x: width/2 + 200, y: height/2, opacity: 1 },
-  Voice: { x: width/2, y: height/2, opacity: 0 },
-  Memory: { x: width/2, y: height/2, opacity: 0 },
-  Response: { x: width/2, y: height/2, opacity: 0 },
-});
+const getGraphLayout = (width, height) => {
+  const s = Math.min(1, width / 600); // Scale factor for mobile
+  return {
+    MR: { x: width/2, y: height/2, opacity: 1 },
+    LLMs: { x: width/2 - 120*s, y: height/2 - 100*s, opacity: 1 },
+    Agents: { x: width/2 + 120*s, y: height/2 - 100*s, opacity: 1 },
+    Speech: { x: width/2 - 140*s, y: height/2 + 60*s, opacity: 1 },
+    OCR: { x: width/2 + 140*s, y: height/2 + 60*s, opacity: 1 },
+    FastAPI: { x: width/2 - 60*s, y: height/2 - 180*s, opacity: 1 },
+    Python: { x: width/2 + 60*s, y: height/2 - 180*s, opacity: 1 },
+    Docker: { x: width/2 - 80*s, y: height/2 + 160*s, opacity: 1 },
+    React: { x: width/2 + 80*s, y: height/2 + 160*s, opacity: 1 },
+    GitHub: { x: width/2 + 200*s, y: height/2, opacity: 1 },
+    Voice: { x: width/2, y: height/2, opacity: 0 },
+    Memory: { x: width/2, y: height/2, opacity: 0 },
+    Response: { x: width/2, y: height/2, opacity: 0 },
+  };
+};
 
 const getPipelineLayout = (width, height) => {
-  const startY = 80;
-  const spacing = (height - 160) / 5;
+  const s = Math.min(1, width / 600);
+  const startY = height * 0.15;
+  const spacing = (height * 0.7) / 5;
   const centerX = width / 2;
   return {
     Voice: { x: centerX, y: startY, opacity: 1 },
     Speech: { x: centerX, y: startY + spacing * 1, opacity: 1 },
     LLMs: { x: centerX, y: startY + spacing * 2, opacity: 1 },
     Agents: { x: centerX, y: startY + spacing * 3, opacity: 1 },
-    Memory: { x: centerX + 120, y: startY + spacing * 3, opacity: 1 },
+    Memory: { x: centerX + 120*s, y: startY + spacing * 3, opacity: 1 },
     Response: { x: centerX, y: startY + spacing * 4, opacity: 1 },
     // Hide others
-    MR: { x: centerX - 150, y: height/2, opacity: 0.1 },
-    OCR: { x: centerX - 150, y: height/2 - 50, opacity: 0.1 },
-    FastAPI: { x: centerX - 150, y: height/2 + 50, opacity: 0.1 },
-    Python: { x: centerX + 150, y: height/2 - 50, opacity: 0.1 },
-    Docker: { x: centerX + 150, y: height/2 + 50, opacity: 0.1 },
-    React: { x: centerX + 150, y: height/2, opacity: 0.1 },
-    GitHub: { x: centerX + 150, y: height/2 + 100, opacity: 0.1 },
+    MR: { x: centerX - 150*s, y: height/2, opacity: 0.1 },
+    OCR: { x: centerX - 150*s, y: height/2 - 50*s, opacity: 0.1 },
+    FastAPI: { x: centerX - 150*s, y: height/2 + 50*s, opacity: 0.1 },
+    Python: { x: centerX + 150*s, y: height/2 - 50*s, opacity: 0.1 },
+    Docker: { x: centerX + 150*s, y: height/2 + 50*s, opacity: 0.1 },
+    React: { x: centerX + 150*s, y: height/2, opacity: 0.1 },
+    GitHub: { x: centerX + 150*s, y: height/2 + 100*s, opacity: 0.1 },
   };
 };
 
