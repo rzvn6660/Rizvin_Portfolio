@@ -2,38 +2,38 @@ export const projects = [
   {
     slug: 'orma-ai',
     title: 'ORMA AI',
-    tagline: 'Malayalam-native voice assistant for elderly care.',
-    status: 'IN ACTIVE DEVELOPMENT',
-    statusColor: 'progress', // maps to color-status-progress
-    stack: ['Speech AI', 'ASR/NMT', 'LLM Orchestration', 'Python'],
-    github: null, 
-    demo: null,
-    docs: null,
+    tagline: 'Voice-first AI memory & daily living companion for older adults.',
+    status: 'PUBLIC BETA',
+    statusColor: 'shipped',
+    stack: ['FastAPI', 'React 19', 'Whisper ASR', 'Groq Llama 3.3', 'Gemini 2.5 Flash', 'PostgreSQL/SQLite'],
+    github: 'https://github.com/rzvn6660/orma-ai',
+    demo: 'https://app-orma-ai.onrender.com',
+    docs: 'https://github.com/rzvn6660/orma-ai/releases/tag/v0.1.0-beta.1',
     featured: true,
-    summary: 'A voice assistant built to tackle aging population care, native-language accessibility, and low-resource-language AI. Features include medicine reminders, appointment recall, emergency detection, and emotion recognition.',
+    summary: 'An assistive, voice-first AI memory and daily living companion for older adults. Combines multilingual Whisper speech recognition with deterministic medication tracking, emergency caregiver alert dispatch, and personal memory recall (OCME).',
     progressItems: [
-      { label: 'ASR Pipeline', status: 'Prototype' },
-      { label: 'Reminder Engine', status: 'In Progress' },
-      { label: 'Emergency Detection', status: 'Planned' },
-      { label: 'Emotion Recognition', status: 'Planned' }
+      { label: 'Multilingual Voice (Whisper)', status: 'Shipped' },
+      { label: 'Medication Safety Engine', status: 'Shipped' },
+      { label: 'Deterministic Emergency Routing', status: 'Shipped' },
+      { label: 'Caregiver Linkage & OCME', status: 'Shipped' }
     ],
-    problem: 'Elderly individuals in Kerala face isolation and difficulty managing health routines due to technology barriers. Most voice assistants lack robust native Malayalam support and are not tailored for geriatric accessibility (medicine reminders, emergency detection). Without native-language tools, they lose independence.',
-    research: 'Evaluated on-device models vs API-driven architectures. A key finding was that elderly users require near-zero latency for trust, pushing the design toward edge-capable components and aggressive caching.',
-    architectureDescription: '1. Voice Input -> 2. Audio Preprocessing -> 3. Whisper STT -> 4. Memory Retrieval -> 5. Llama 3 Processing -> 6. Translation Layer -> 7. Response Generation -> 8. Text-to-Speech -> 9. Memory Update -> 10. Reminder System -> 11. Emergency Detection -> 12. Caregiver Dashboard.',
-    architectureImage: '/orma-architecture.png',
+    problem: 'Aging seniors face cognitive fatigue, complex nested smartphone menus, multi-dose medication regimens, and language barriers. Mainstream voice assistants lack regional language fluency and fail to provide deterministic safety guardrails or caregiver visibility when urgent health events occur.',
+    research: 'Evaluated speech latency tolerances and safety failure modes with older adults. Established a hybrid architecture: deterministic backend services handle safety-critical workflows (medications, emergency dispatch) without LLM hallucination risk, while conversational memory relies on fast multilingual inference.',
+    architectureDescription: '1. Spoken / Touch Input -> 2. Client Audio Preprocessing (Web Audio API) -> 3. Multilingual Whisper ASR -> 4. Deterministic Intent & Safety Classifier -> 5. Emergency Safety Bypass (Caregiver Alerts) OR Medication Engine / OCME Context Retrieval -> 6. Dual-LLM Orchestration (Groq Llama 3.3 70B with Gemini 2.5 Flash Fallback) -> 7. Speech Synthesis & Accessible React UI -> 8. Caregiver Telemetry & Escalation.',
+    architectureImage: '/ormaarchitecture.png',
     engineeringDecisions: [
       {
-        title: 'Choice of ASR',
-        reasoning: 'Prioritizing local/Indic-specific models over generalized APIs to reduce latency and improve accuracy on colloquial Malayalam.'
+        title: 'Deterministic Emergency Safety Bypass',
+        reasoning: 'Critical emergency keywords ("Help me", "I fell") completely bypass generative LLM reasoning to immediately trigger deterministic caregiver alerts, preventing hallucinations and latency during emergencies.'
       },
       {
-        title: 'State Management for Reminders',
-        reasoning: 'Using a lightweight database over a heavy distributed queue for early iterations to keep the architecture simple and the footprint low.'
+        title: 'Dual-LLM Automated Failover',
+        reasoning: 'Configured Groq Llama 3.3 70B as primary for sub-second conversational latency, backed by automated fallback to Gemini 2.5 Flash to guarantee high availability.'
       }
     ],
-    tradeoffs: 'Focusing heavily on backend orchestration means the frontend interface is deprioritized—the primary interface is voice. Latency is the biggest challenge; doing sequential ASR -> LLM -> TTS inherently adds delay, requiring clever local caching and streaming TTS solutions to maintain a natural conversation flow.',
-    lessonsLearned: 'Building empathy-driven AI requires deeply understanding the latency tolerance of the end user. Elderly users interpret long pauses as system failure, so optimizing the time-to-first-audio-byte is a technical necessity, not just a nice-to-have.',
-    roadmap: 'Phase 1 (Completed): Initial ASR/LLM pipeline proof of concept. Phase 2 (Current): Hardening the reminder state engine and reducing latency. Phase 3 (Next): Integrating emergency voice detection and physical-environment aware emotional recognition.'
+    tradeoffs: 'Balancing a hands-free voice interface with high-contrast visual accessibility. While voice removes touchscreen friction for seniors, medication logging incorporates touch confirmation as a deterministic safeguard against misheard speech.',
+    lessonsLearned: 'Assistive healthcare AI demands strict boundaries between probabilistic generation and deterministic safety. Isolating safety-critical workflows into rule-based engines ensures user trust and caregiver reliability.',
+    roadmap: 'Beta 1 is publicly released and deployed. Upcoming engineering focuses on on-device offline voice models for zero-connectivity environments, wearable biometric sensors, and localized dialect adaptation.'
   },
   {
     slug: 'triem',

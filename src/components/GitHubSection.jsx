@@ -53,6 +53,14 @@ export default function GitHubSection() {
           <div className="pinned-repos">
             {[
               {
+                name: 'orma-ai',
+                desc: 'Assistive voice-first AI memory & daily living companion for older adults with deterministic medication and emergency safety.',
+                lang: 'Python',
+                stars: '2',
+                forks: '0',
+                updated: 'v0.1.0-beta.1'
+              },
+              {
                 name: 'Multilingual-AI',
                 desc: 'Pipeline integrating IndicConformer ASR, IndicTrans2 NMT, and Groq LLM orchestration.',
                 lang: 'Python',

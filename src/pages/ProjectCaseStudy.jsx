@@ -47,8 +47,13 @@ export default function ProjectCaseStudy() {
             </div>
             
             <div className="cs-links">
+              {project.demo && (
+                <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  <ExternalLink size={18} /> Live Demo
+                </a>
+              )}
               {project.github ? (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className={project.demo ? "btn btn-secondary" : "btn btn-primary"}>
                   <FaGithub size={18} /> View on GitHub
                 </a>
               ) : (

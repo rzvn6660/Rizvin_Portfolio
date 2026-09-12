@@ -134,6 +134,7 @@
 .item-status {
   font-size: 0.75rem;
 }
+.status-shipped { color: #4db8ff; }
 .status-prototype { color: #ffb74d; }
 .status-in-progress { color: #4db8ff; }
 .status-planned { color: var(--color-text-tertiary); }
