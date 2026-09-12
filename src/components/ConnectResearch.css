@@ -1,0 +1,216 @@
+/* ==========================================================================
+   Connect & Research Section
+   ========================================================================== */
+
+.connect-research-section {
+  padding: 72px 0 36px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .connect-research-section {
+    padding: 88px 0 44px;
+  }
+}
+
+.connect-research-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-16);
+  align-items: stretch;
+}
+
+/* Tablet (768px - 1023px): Balanced 2 + 1 arrangement */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .connect-research-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-20);
+  }
+
+  .connect-card-ijert {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop (1024px+): 3 equal visual cards */
+@media (min-width: 1024px) {
+  .connect-research-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Card Architecture
+   -------------------------------------------------------------------------- */
+.connect-research-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-24);
+  min-height: 220px;
+  height: 100%;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(16, 16, 22, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-medium);
+}
+
+.connect-research-grid.in-view .connect-research-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connect-research-grid.in-view .connect-research-card:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.connect-research-grid.in-view .connect-research-card:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.connect-research-grid.in-view .connect-research-card:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .connect-research-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 16px 36px -10px rgba(0, 0, 0, 0.75),
+      0 0 24px -8px rgba(0, 229, 255, 0.1);
+  }
+
+  .connect-research-card:hover .connect-card-action {
+    color: #ffffff;
+  }
+
+  .connect-research-card:hover .connect-card-action svg {
+    transform: translate(2px, -2px);
+  }
+}
+
+.connect-research-card:focus-visible {
+  outline: 2px solid var(--color-accent-secondary);
+  outline-offset: 3px;
+}
+
+/* Card Top Bar */
+.connect-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.connect-card-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.connect-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .connect-research-card:hover .icon-linkedin {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.3);
+    background: rgba(0, 229, 255, 0.08);
+  }
+
+  .connect-research-card:hover .icon-github {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .connect-research-card:hover .icon-publication {
+    color: #c084fc;
+    border-color: rgba(192, 132, 252, 0.3);
+    background: rgba(192, 132, 252, 0.08);
+  }
+}
+
+/* Card Body */
+.connect-card-body {
+  margin: 16px 0 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.connect-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.connect-card-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+/* Card Footer */
+.connect-card-footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+.connect-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent-secondary);
+  transition: color var(--transition-fast);
+}
+
+.connect-card-action svg {
+  transition: transform var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .connect-research-card,
+  .connect-card-action svg {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

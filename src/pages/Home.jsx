@@ -4,6 +4,7 @@ import SkillStrip from '../components/SkillStrip';
 import ProjectCard from '../components/ProjectCard';
 import GitHubSection from '../components/GitHubSection';
 import Certifications from '../components/Certifications';
+import ConnectResearch from '../components/ConnectResearch';
 import Contact from '../components/Contact';
 import { projects } from '../data/projects';
 
@@ -37,6 +38,7 @@ export default function Home() {
 
       <GitHubSection />
       <Certifications />
+      <ConnectResearch />
       <Contact />
     </>
   );
