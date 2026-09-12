@@ -1,122 +1,484 @@
+/* ==========================================================================
+   Hero Section - Personal Identity Elevation (P8)
+   ========================================================================== */
+
 .hero-section {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 96px;
+  padding-top: 88px;
+  padding-bottom: 48px;
   overflow: hidden;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 1024px) {
   .hero-section {
-    padding-top: 120px;
+    padding-top: 104px;
+    padding-bottom: 48px;
+    min-height: calc(100vh - 20px);
   }
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-48);
+  gap: var(--space-40, 40px);
   align-items: center;
   z-index: 2;
   width: 100%;
 }
 
+/* Tablet (768px - 1023px): Balanced 2-column layout to avoid awkward wrapping */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-container {
+    grid-template-columns: 1fr 300px;
+    gap: var(--space-32);
+    align-items: center;
+  }
+}
+
+/* Desktop (1024px+): Standard 2-column layout */
 @media (min-width: 1024px) {
   .hero-container {
-    grid-template-columns: 6fr 5fr;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-48);
+    align-items: center;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-container {
+    grid-template-columns: 1.2fr 0.8fr;
     gap: var(--space-64);
   }
 }
 
+/* --------------------------------------------------------------------------
+   Left Column: Hero Content & Identity
+   -------------------------------------------------------------------------- */
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
+  z-index: 2;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-content {
     text-align: left;
     align-items: flex-start;
   }
 }
 
-.hero-title {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  margin-bottom: var(--space-24);
+/* Status Pill: Availability Beacon */
+.hero-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  border-radius: 100px;
+  margin-bottom: var(--space-16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: fit-content;
 }
 
+.status-pill-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
+}
+
+/* Identity: Name & Professional Title */
+.hero-identity-group {
+  margin-bottom: var(--space-16);
+}
+
+.hero-name {
+  font-size: clamp(2.2rem, 5.2vw, 3.75rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.hero-role-title {
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--color-accent-secondary);
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .hero-role-title {
+    justify-content: flex-start;
+  }
+}
+
+/* Tagline / Value Proposition */
+.hero-tagline {
+  font-size: clamp(1.3rem, 2.7vw, 2.1rem);
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-16);
+  color: var(--color-text-primary);
+}
+
+/* Technical Subtitle */
 .hero-subtitle {
-  font-size: 1.125rem;
+  font-size: clamp(0.925rem, 1.4vw, 1.05rem);
   color: var(--color-text-secondary);
-  line-height: 1.65;
-  max-width: 600px;
-  margin-bottom: var(--space-48);
+  line-height: 1.62;
+  max-width: 580px;
+  margin-bottom: var(--space-32);
   margin-left: auto;
   margin-right: auto;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-subtitle {
     margin-left: 0;
     margin-right: 0;
   }
 }
 
-.hero-cta-row {
+/* --------------------------------------------------------------------------
+   Prioritized CTA Hierarchy
+   -------------------------------------------------------------------------- */
+.hero-cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero-cta-wrapper {
+    align-items: flex-start;
+  }
+}
+
+.hero-primary-actions {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: var(--space-16);
-  justify-content: center;
+  gap: var(--space-12);
 }
 
-@media (min-width: 641px) {
-  .hero-cta-row {
+@media (min-width: 480px) {
+  .hero-primary-actions {
     flex-direction: row;
     width: auto;
   }
 }
 
-/* Visualization Panel */
+.hero-btn-primary {
+  gap: 8px;
+  background: #ffffff;
+  color: #050505;
+  font-weight: 600;
+}
+
+.hero-btn-primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.22);
+}
+
+.hero-btn-secondary {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Consolidated Dual-Region Resume Control */
+.hero-resume-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  width: fit-content;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.hero-resume-control:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-resume-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero-resume-icon {
+  color: var(--color-accent-secondary);
+}
+
+.hero-resume-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-resume-link {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-resume-link:hover {
+  color: var(--color-accent-secondary);
+  background: rgba(0, 229, 255, 0.08);
+}
+
+.hero-resume-divider {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Right Column: Profile Card (Inspired by 21st.dev ID 2581)
+   -------------------------------------------------------------------------- */
 .hero-visual {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 320px;
+  width: 100%;
+  z-index: 2;
 }
 
-@media (min-width: 641px) {
+/* Mobile natural stacking: keep photo prominent without consuming entire screen */
+@media (max-width: 767px) {
   .hero-visual {
-    height: 400px;
+    order: -1;
+    margin-bottom: var(--space-8);
   }
 }
 
-@media (min-width: 1024px) {
-  .hero-visual {
-    height: 500px;
-    transform: translateY(-24px);
+.profile-card {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+  background: rgba(16, 16, 22, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 48px -15px rgba(0, 0, 0, 0.8),
+    0 0 35px -12px rgba(138, 43, 226, 0.18),
+    0 0 20px -8px rgba(0, 229, 255, 0.12);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
+}
+
+@media (max-width: 767px) {
+  .profile-card {
+    max-width: 250px;
+    padding: 10px;
+    border-radius: 20px;
   }
 }
 
-.neural-network-wrapper {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .profile-card {
+    max-width: 280px;
+    padding: 12px;
+  }
+}
+
+@media (hover: hover) {
+  .profile-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 26px 54px -15px rgba(0, 0, 0, 0.9),
+      0 0 45px -8px rgba(138, 43, 226, 0.26),
+      0 0 24px -4px rgba(0, 229, 255, 0.18);
+  }
+}
+
+/* Subtle Cyan/Purple Ambient Aura behind Card */
+.profile-card-aura {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(138, 43, 226, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 75% 80%, rgba(0, 229, 255, 0.14) 0%, transparent 60%);
+  border-radius: 32px;
+  filter: blur(24px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Photo Frame (~4:5 natural aspect ratio) */
+.profile-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 767px) {
+  .profile-photo-frame {
+    border-radius: 14px;
+  }
+}
+
+.profile-photo {
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow: hidden;
+  object-fit: cover;
+  object-position: center 12%;
+  display: block;
 }
 
+/* Bottom fade for smooth integration into card base */
+.profile-photo-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 32%;
+  background: linear-gradient(to top, rgba(14, 14, 18, 0.95) 0%, rgba(14, 14, 18, 0.4) 30%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Photo In-frame Verification Tag */
+.profile-photo-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.profile-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-secondary);
+  box-shadow: 0 0 6px var(--color-accent-secondary);
+}
+
+/* Profile Card Footer */
+.profile-card-footer {
+  padding: 12px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding-bottom: 2px;
+}
+
+.profile-meta-role {
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-size: 12px;
+}
+
+.profile-meta-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-text-tertiary);
+  font-size: 11px;
+}
+
+.profile-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.profile-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.profile-tag:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Reduced Motion
+   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-title, .hero-subtitle, .hero-cta-row, .hero-visual {
+  .hero-name,
+  .hero-role-title,
+  .hero-tagline,
+  .hero-subtitle,
+  .hero-cta-wrapper,
+  .hero-visual,
+  .profile-card {
     animation: none !important;
-    opacity: 1 !important;
+    transition: none !important;
     transform: none !important;
   }
 }

@@ -79,10 +79,13 @@ export default function Contact() {
           <div className="contact-form-side">
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div className="input-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Name</label>
+                <label htmlFor="contact-name" style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Name</label>
                 <input 
+                  id="contact-name"
+                  name="name"
                   type="text" 
                   required
+                  autoComplete="name"
                   value={formData.name}
                   onChange={e => setFormData({...formData, name: e.target.value})}
                   style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)', padding: '1rem', borderRadius: '8px', color: '#fff', fontSize: '1rem', outline: 'none', transition: 'border-color 0.3s' }}
@@ -91,8 +94,10 @@ export default function Contact() {
                 />
               </div>
               <div className="input-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Message</label>
+                <label htmlFor="contact-message" style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Message</label>
                 <textarea 
+                  id="contact-message"
+                  name="message"
                   required
                   rows="4"
                   value={formData.message}
