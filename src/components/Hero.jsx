@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import AuroraBackground from './AuroraBackground';
-import { Download, ArrowRight, MapPin } from 'lucide-react';
+import { Download, ArrowRight, MapPin, RotateCw } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import './Hero.css';
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleCardFlip = () => {
+    setIsFlipped(prev => !prev);
+  };
+
+  const handleCardKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleCardFlip();
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -106,52 +118,116 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Elevated Engineering Profile Card */}
+        {/* Right Column: Elevated Engineering Profile Card (Click-to-Flip) */}
         <motion.div
           className="hero-visual"
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="profile-card">
-            {/* Ambient Backlight Glow */}
+          <div
+            className={`profile-card-container ${isFlipped ? 'flipped' : ''}`}
+            onClick={handleCardFlip}
+            onKeyDown={handleCardKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={isFlipped ? "Flip to Mohammed Rizvin MK portrait view" : "Flip to Mohammed Rizvin MK professional identity card view"}
+            aria-pressed={isFlipped}
+          >
+            {/* Ambient Backlight Glow stays grounded outside 3D rotation */}
             <div className="profile-card-aura" aria-hidden="true" />
 
-            {/* Squircle Photo Frame (~4:5 ratio) */}
-            <div className="profile-photo-frame">
-              <img
-                src="/profile.jpg"
-                alt="Mohammed Rizvin MK - AI & Data Science Engineer"
-                className="profile-photo"
-                width="853"
-                height="1024"
-                loading="eager"
-                decoding="async"
-              />
-              <div className="profile-photo-fade" aria-hidden="true" />
+            <div className="profile-card-inner">
+              {/* FRONT FACE: Authentic Professional Portrait Card */}
+              <div className="profile-card-front">
+                {/* Squircle Photo Frame (~4:5 ratio) */}
+                <div className="profile-photo-frame">
+                  <img
+                    src="/profile.jpg"
+                    alt="Mohammed Rizvin MK - AI & Data Science Engineer"
+                    className="profile-photo"
+                    width="853"
+                    height="1024"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div className="profile-photo-fade" aria-hidden="true" />
 
-              {/* Subtle In-frame Verification Tag */}
-              <div className="profile-photo-badge" aria-hidden="true">
-                <span className="profile-badge-dot" />
-                <span>AI Systems</span>
+                  {/* Subtle In-frame Verification Tag */}
+                  <div className="profile-photo-badge" aria-hidden="true">
+                    <span className="profile-badge-dot" />
+                    <span>AI Systems</span>
+                  </div>
+
+                  {/* Subtle Flip Hint Tag */}
+                  <div className="profile-photo-flip-cue" aria-hidden="true">
+                    <RotateCw size={11} />
+                    <span>ID Card</span>
+                  </div>
+                </div>
+
+                {/* Profile Card Footer / Technical Credibility */}
+                <div className="profile-card-footer">
+                  <div className="profile-card-meta">
+                    <span className="profile-meta-role">AI & Data Science Engineer</span>
+                    <span className="profile-meta-location">
+                      <MapPin size={12} aria-hidden="true" />
+                      India · UAE
+                    </span>
+                  </div>
+
+                  <div className="profile-card-tags" aria-label="Core AI specializations">
+                    <span className="profile-tag">LLMs & Agents</span>
+                    <span className="profile-tag">Speech AI</span>
+                    <span className="profile-tag">FastAPI</span>
+                    <span className="profile-tag">PyTorch</span>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Profile Card Footer / Technical Credibility */}
-            <div className="profile-card-footer">
-              <div className="profile-card-meta">
-                <span className="profile-meta-role">AI & Data Science Engineer</span>
-                <span className="profile-meta-location">
-                  <MapPin size={12} aria-hidden="true" />
-                  India · UAE
-                </span>
-              </div>
+              {/* BACK FACE: Clean Professional Identity Card */}
+              <div className="profile-card-back" aria-hidden={!isFlipped}>
+                {/* Top Bar: Monogram & Return Cue */}
+                <div className="profile-back-header">
+                  <div className="profile-back-chip">
+                    <span className="profile-chip-dot" aria-hidden="true" />
+                    <span>ID // AI ENGINEERING</span>
+                  </div>
+                  <div className="profile-back-flip-cue" aria-hidden="true">
+                    <RotateCw size={11} />
+                    <span>Photo</span>
+                  </div>
+                </div>
 
-              <div className="profile-card-tags" aria-label="Core AI specializations">
-                <span className="profile-tag">LLMs & Agents</span>
-                <span className="profile-tag">Speech AI</span>
-                <span className="profile-tag">FastAPI</span>
-                <span className="profile-tag">PyTorch</span>
+                {/* Center Identity */}
+                <div className="profile-back-body">
+                  <h3 className="profile-back-name">Mohammed Rizvin MK</h3>
+                  <p className="profile-back-role">AI & Data Science Engineer</p>
+
+                  <div className="profile-back-location">
+                    <MapPin size={12} aria-hidden="true" />
+                    <span>India · UAE</span>
+                  </div>
+
+                  <div className="profile-back-divider" aria-hidden="true" />
+
+                  {/* Short Focus Line */}
+                  <div className="profile-back-focus">
+                    <span className="profile-focus-label">Core Focus</span>
+                    <p className="profile-focus-text">
+                      Generative AI · AI Agents · Speech AI · Multimodal AI
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bottom Bar: Availability & Hint */}
+                <div className="profile-back-footer">
+                  <div className="profile-back-availability">
+                    <span className="status-dot pulse" aria-hidden="true" />
+                    <span>Available for AI Roles</span>
+                  </div>
+                  <span className="profile-back-hint" aria-hidden="true">Click to flip</span>
+                </div>
               </div>
             </div>
           </div>

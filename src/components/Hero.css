@@ -269,7 +269,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Right Column: Profile Card (Inspired by 21st.dev ID 2581)
+   Right Column: Profile Card (Click-to-Flip 3D Identity Card)
    -------------------------------------------------------------------------- */
 .hero-visual {
   display: flex;
@@ -288,14 +288,64 @@
   }
 }
 
-.profile-card {
+.profile-card-container {
   position: relative;
   width: 100%;
   max-width: 330px;
   margin: 0 auto;
-  background: rgba(16, 16, 22, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  perspective: 1200px;
+  cursor: pointer;
+  outline: none;
   border-radius: 24px;
+  transition: transform var(--transition-medium);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 767px) {
+  .profile-card-container {
+    max-width: 250px;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .profile-card-container {
+    max-width: 280px;
+  }
+}
+
+.profile-card-container:focus-visible {
+  outline: 2px solid var(--color-accent-secondary);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .profile-card-container:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Inner 3D Rotation Mechanism */
+.profile-card-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: inherit;
+}
+
+.profile-card-container.flipped .profile-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Dual Card Faces (Front & Back) */
+.profile-card-front,
+.profile-card-back {
+  width: 100%;
+  border-radius: inherit;
+  background: rgba(16, 16, 22, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 12px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -303,32 +353,53 @@
     0 20px 48px -15px rgba(0, 0, 0, 0.8),
     0 0 35px -12px rgba(138, 43, 226, 0.18),
     0 0 20px -8px rgba(0, 229, 255, 0.12);
-  transition: transform var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 @media (max-width: 767px) {
-  .profile-card {
-    max-width: 250px;
+  .profile-card-front {
     padding: 10px;
-    border-radius: 20px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .profile-card {
-    max-width: 280px;
-    padding: 12px;
   }
 }
 
 @media (hover: hover) {
-  .profile-card:hover {
-    transform: translateY(-4px);
+  .profile-card-container:hover .profile-card-front,
+  .profile-card-container:hover .profile-card-back {
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow:
       0 26px 54px -15px rgba(0, 0, 0, 0.9),
       0 0 45px -8px rgba(138, 43, 226, 0.26),
       0 0 24px -4px rgba(0, 229, 255, 0.18);
+  }
+}
+
+.profile-card-front {
+  position: relative;
+  transform: rotateY(0deg);
+}
+
+/* Back Face Positioned Over Front Face (Zero Layout Shift) */
+.profile-card-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 20px;
+}
+
+@media (max-width: 767px) {
+  .profile-card-back {
+    padding: 16px 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .profile-card-back {
+    padding: 18px 16px;
   }
 }
 
@@ -412,7 +483,36 @@
   box-shadow: 0 0 6px var(--color-accent-secondary);
 }
 
-/* Profile Card Footer */
+/* Photo In-frame Flip Cue */
+.profile-photo-flip-cue {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 4px 9px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-accent-secondary);
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .profile-card-container:hover .profile-photo-flip-cue {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: rgba(0, 229, 255, 0.35);
+    color: #ffffff;
+  }
+}
+
+/* Profile Card Footer (Front) */
 .profile-card-footer {
   padding: 12px 4px 4px;
   display: flex;
@@ -467,6 +567,150 @@
 }
 
 /* --------------------------------------------------------------------------
+   Back Face: Professional Identity Card Styling
+   -------------------------------------------------------------------------- */
+.profile-back-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile-back-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.profile-chip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent-secondary);
+}
+
+.profile-back-flip-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-accent-secondary);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  padding: 3px 9px;
+  border-radius: 100px;
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) {
+  .profile-card-container:hover .profile-back-flip-cue {
+    background: rgba(0, 229, 255, 0.18);
+    color: #ffffff;
+  }
+}
+
+.profile-back-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto 0;
+  text-align: left;
+  width: 100%;
+}
+
+.profile-back-name {
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.profile-back-role {
+  font-size: clamp(0.925rem, 1.8vw, 1.05rem);
+  font-weight: 500;
+  color: var(--color-accent-secondary);
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+}
+
+.profile-back-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 14px;
+}
+
+.profile-back-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 229, 255, 0.3) 0%, rgba(138, 43, 226, 0.3) 60%, transparent 100%);
+  margin-bottom: 14px;
+}
+
+.profile-back-focus {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.profile-focus-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-tertiary);
+  margin-bottom: 5px;
+}
+
+.profile-focus-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.profile-back-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+}
+
+.profile-back-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-secondary);
+  font-size: 11.5px;
+}
+
+.profile-back-hint {
+  font-size: 10.5px;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
    Accessibility & Reduced Motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -476,7 +720,10 @@
   .hero-subtitle,
   .hero-cta-wrapper,
   .hero-visual,
-  .profile-card {
+  .profile-card-container,
+  .profile-card-inner,
+  .profile-card-front,
+  .profile-card-back {
     animation: none !important;
     transition: none !important;
     transform: none !important;
