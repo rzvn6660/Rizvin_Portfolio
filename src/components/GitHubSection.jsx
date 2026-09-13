@@ -1,8 +1,32 @@
 import React from 'react';
-import { Star, GitFork, Activity } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
+import { FaGithub } from 'react-icons/fa';
+import { ArrowUpRight, ExternalLink, Code2 } from 'lucide-react';
 import './GitHubSection.css';
+
+const publicRepos = [
+  {
+    name: 'orma-ai',
+    url: 'https://github.com/rzvn6660/orma-ai',
+    description: 'Assistive voice-first AI memory & daily living companion with deterministic medication adherence and emergency escalation.',
+    lang: 'Python',
+    stack: ['FastAPI', 'LangGraph', 'Docker', 'React']
+  },
+  {
+    name: 'Multilingual-AI',
+    url: 'https://github.com/rzvn6660/Multilingual-AI',
+    description: 'Speech-to-speech AI assistant for Santali tribal communities integrating low-resource ASR, neural machine translation, and LLM reasoning.',
+    lang: 'Python',
+    stack: ['IndicConformer', 'IndicTrans2', 'Flask', 'Docker']
+  },
+  {
+    name: 'Medi-fy',
+    url: 'https://github.com/rzvn6660/Medi-fy',
+    description: 'Computer vision and NLP system extracting drug dosage and usage from medicine packaging with OpenFDA validation.',
+    lang: 'Python',
+    stack: ['OpenCV', 'Pytesseract OCR', 'NLP', 'Gradio']
+  }
+];
 
 export default function GitHubSection() {
   const { ref, inView } = useInView({
@@ -11,92 +35,94 @@ export default function GitHubSection() {
   });
 
   return (
-    <section id="github" className="section-padding">
-      <div className="container">
+    <section id="github" className="section-padding github-section" aria-label="Open Source and Engineering">
+      <div className="container" ref={ref}>
         <div className="section-header">
-          <h2 className="section-title">Open Source & Code</h2>
-          <p className="section-subtitle">Real code. Real commits.</p>
+          <h2 className="section-title">Open Source &amp; Engineering</h2>
+          <p className="section-subtitle">
+            Public codebases, modular architectures, and reproducible AI systems.
+          </p>
         </div>
-        
-        <div className="github-grid" ref={ref}>
-          {/* Static fallback for GitHub Graph to ensure reliability without API rate limits */}
-          <div className={`github-graph-card glass-panel ${inView ? 'in-view' : ''}`}>
-            <div className="card-header">
-              <FaGithub size={24} />
-              <div className="card-title-group">
-                <h3>github.com/rzvn6660</h3>
-                <span className="live-status">
-                  <Activity size={14} className="pulse-icon" /> Live Activity
-                </span>
+
+        <div className={`github-layout ${inView ? 'in-view' : ''}`}>
+          {/* Profile & Engineering Overview Card */}
+          <div className="github-profile-card glass-panel">
+            <div>
+              <div className="profile-card-header">
+                <div className="github-avatar-wrap">
+                  <FaGithub size={26} aria-hidden="true" />
+                </div>
+                <div>
+                  <span className="profile-handle-label">GitHub Profile</span>
+                  <h3 className="profile-handle">github.com/rzvn6660</h3>
+                </div>
+              </div>
+
+              <p className="profile-card-desc">
+                All primary AI systems are developed openly with reproducible pipelines, Docker containerization, and documented engineering architectures.
+              </p>
+
+              <div className="engineering-standards-list">
+                <div className="standard-item">
+                  <Code2 size={15} className="standard-icon" aria-hidden="true" />
+                  <span>Modular Python services &amp; typed REST APIs</span>
+                </div>
+                <div className="standard-item">
+                  <Code2 size={15} className="standard-icon" aria-hidden="true" />
+                  <span>Containerized deployments for reproducible runs</span>
+                </div>
+                <div className="standard-item">
+                  <Code2 size={15} className="standard-icon" aria-hidden="true" />
+                  <span>Open schemas, pipeline benchmarks, and trade-offs</span>
+                </div>
               </div>
             </div>
-            <div className="graph-placeholder">
-              <div className="contribution-grid">
-                {/* Generative abstract representation of a contribution graph */}
-                {Array.from({ length: 156 }).map((_, i) => {
-                  const intensity = Math.random() > 0.7 ? Math.floor(Math.random() * 4) + 1 : 0;
-                  return (
-                    <div 
-                      key={i} 
-                      className={`contrib-cell level-${intensity}`}
-                      style={{ animationDelay: `${Math.random() * 2}s` }}
-                    ></div>
-                  );
-                })}
-              </div>
-            </div>
-            <a href="https://github.com/rzvn6660" target="_blank" rel="noopener noreferrer" className="btn btn-ghost github-btn">
-              View full profile
+
+            <a
+              href="https://github.com/rzvn6660"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary github-profile-btn"
+              aria-label="View Mohammed Rizvin's GitHub profile (opens in new tab)"
+            >
+              <FaGithub size={18} aria-hidden="true" />
+              <span>View GitHub Profile</span>
+              <ExternalLink size={15} aria-hidden="true" />
             </a>
           </div>
 
-          <div className="pinned-repos">
-            {[
-              {
-                name: 'orma-ai',
-                desc: 'Assistive voice-first AI memory & daily living companion for older adults with deterministic medication and emergency safety.',
-                lang: 'Python',
-                stars: '2',
-                forks: '0',
-                updated: 'v0.1.0-beta.1'
-              },
-              {
-                name: 'Multilingual-AI',
-                desc: 'Pipeline integrating IndicConformer ASR, IndicTrans2 NMT, and Groq LLM orchestration.',
-                lang: 'Python',
-                stars: '12',
-                forks: '4',
-                updated: '2 days ago'
-              },
-              {
-                name: 'Medi-fy',
-                desc: 'AI medicine chatbot using OCR extraction, NLP normalization, and OpenFDA API lookup.',
-                lang: 'Python',
-                stars: '8',
-                forks: '2',
-                updated: '1 week ago'
-              }
-            ].map((repo, i) => (
-              <a 
-                href={`https://github.com/rzvn6660/${repo.name}`}
+          {/* Clean Public Repositories Directory */}
+          <div className="github-repos-directory" role="list" aria-label="Featured Public Repositories">
+            {publicRepos.map((repo, idx) => (
+              <a
+                key={repo.name}
+                href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                key={repo.name} 
-                className={`repo-card glass-panel glass-panel-hover ${inView ? 'in-view' : ''}`}
-                style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+                className="github-repo-row glass-panel"
+                role="listitem"
+                style={{ '--row-delay': `${(idx + 1) * 100}ms` }}
+                aria-label={`${repo.name} repository on GitHub (opens in new tab)`}
               >
-                <div className="repo-header">
-                  <h4 className="repo-name">{repo.name}</h4>
+                <div className="repo-row-top">
+                  <div className="repo-row-title-wrap">
+                    <h4 className="repo-row-name">{repo.name}</h4>
+                    <span className="repo-lang-badge">
+                      <span className="lang-indicator" aria-hidden="true"></span>
+                      {repo.lang}
+                    </span>
+                  </div>
+                  <div className="repo-row-action" aria-hidden="true">
+                    <ArrowUpRight size={18} />
+                  </div>
                 </div>
-                <p className="repo-desc">{repo.desc}</p>
-                <div className="repo-meta text-mono">
-                  <span className="repo-lang">
-                    <span className="lang-dot"></span>
-                    {repo.lang}
-                  </span>
-                  <span className="repo-stat"><Star size={14} /> {repo.stars}</span>
-                  <span className="repo-stat"><GitFork size={14} /> {repo.forks}</span>
-                  <span className="repo-updated">Updated {repo.updated}</span>
+
+                <p className="repo-row-desc">{repo.description}</p>
+
+                <div className="repo-row-stack">
+                  {repo.stack.map((item) => (
+                    <span key={item} className="repo-stack-pill">{item}</span>
+                  ))}
                 </div>
               </a>
             ))}
