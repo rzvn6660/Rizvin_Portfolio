@@ -1,55 +1,55 @@
 /* ==========================================================================
-   Hero Section - Personal Identity Elevation (P8)
+   Hero Section - Clean, Premium Engineering Identity
    ========================================================================== */
 
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
-  padding-top: 88px;
-  padding-bottom: 48px;
+  padding-top: 84px;
+  padding-bottom: 40px;
   overflow: hidden;
 }
 
 @media (min-width: 1024px) {
   .hero-section {
-    padding-top: 104px;
+    padding-top: 96px;
     padding-bottom: 48px;
-    min-height: calc(100vh - 20px);
+    min-height: calc(100vh - 30px);
   }
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-40, 40px);
+  gap: var(--space-32, 32px);
   align-items: center;
   z-index: 2;
   width: 100%;
 }
 
-/* Tablet (768px - 1023px): Balanced 2-column layout to avoid awkward wrapping */
+/* Tablet (768px - 1023px): Balanced 2-column layout */
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero-container {
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 290px;
     gap: var(--space-32);
     align-items: center;
   }
 }
 
-/* Desktop (1024px+): Standard 2-column layout */
+/* Desktop (1024px+): Text dominant, portrait supporting */
 @media (min-width: 1024px) {
   .hero-container {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.22fr 0.78fr;
     gap: var(--space-48);
     align-items: center;
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
   .hero-container {
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.25fr 0.75fr;
     gap: var(--space-64);
   }
 }
@@ -73,94 +73,67 @@
   }
 }
 
-/* Status Pill: Availability Beacon */
-.hero-status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(0, 229, 255, 0.06);
-  border: 1px solid rgba(0, 229, 255, 0.22);
-  border-radius: 100px;
-  margin-bottom: var(--space-16);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  width: fit-content;
-}
-
-.status-pill-text {
-  font-size: 12.5px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--color-text-primary);
-}
-
 /* Identity: Name & Professional Title */
 .hero-identity-group {
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-12, 12px);
 }
 
 .hero-name {
-  font-size: clamp(2.2rem, 5.2vw, 3.75rem);
-  line-height: 1.08;
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  line-height: 1.06;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: #ffffff;
-  margin-bottom: 6px;
+  margin-bottom: 0.35rem;
 }
 
 .hero-role-title {
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
   font-weight: 500;
   color: var(--color-accent-secondary);
-  letter-spacing: 0.01em;
-  display: flex;
+  letter-spacing: -0.01em;
+}
+
+/* Core Technical Positioning Strip */
+.hero-positioning {
+  display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
-  justify-content: center;
-}
-
-@media (min-width: 768px) {
-  .hero-role-title {
-    justify-content: flex-start;
-  }
-}
-
-/* Tagline / Value Proposition */
-.hero-tagline {
-  font-size: clamp(1.3rem, 2.7vw, 2.1rem);
-  line-height: 1.22;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-16);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.4vw, 0.86rem);
   color: var(--color-text-primary);
+  font-weight: 500;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-bottom: var(--space-16, 16px);
+  width: fit-content;
 }
 
-/* Technical Subtitle */
-.hero-subtitle {
-  font-size: clamp(0.925rem, 1.4vw, 1.05rem);
+.hero-bullet {
+  color: var(--color-accent-secondary);
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* High-Impact Value Narrative */
+.hero-description {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   color: var(--color-text-secondary);
   line-height: 1.62;
-  max-width: 580px;
-  margin-bottom: var(--space-32);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 768px) {
-  .hero-subtitle {
-    margin-left: 0;
-    margin-right: 0;
-  }
+  max-width: 540px;
+  margin-bottom: var(--space-28, 28px);
 }
 
 /* --------------------------------------------------------------------------
-   Prioritized CTA Hierarchy
+   CTA Hierarchy & Resume Access
    -------------------------------------------------------------------------- */
 .hero-cta-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
+  gap: var(--space-16, 16px);
   width: 100%;
   align-items: center;
 }
@@ -175,66 +148,76 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: var(--space-12);
+  max-width: 320px;
+  gap: var(--space-12, 12px);
 }
 
 @media (min-width: 480px) {
   .hero-primary-actions {
     flex-direction: row;
+    max-width: none;
     width: auto;
   }
 }
 
 .hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   background: #ffffff;
   color: #050505;
   font-weight: 600;
+  padding: 0.75rem 1.6rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-btn-primary:hover {
   background: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.22);
 }
 
 .hero-btn-secondary {
-  border-color: rgba(255, 255, 255, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
 }
 
-/* Consolidated Dual-Region Resume Control */
+/* Secondary Resume Access */
 .hero-resume-control {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  border-radius: var(--border-radius-sm);
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 13px;
-  color: var(--color-text-secondary);
-  width: fit-content;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
-}
-
-.hero-resume-control:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.82rem;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
 }
 
 .hero-resume-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--color-text-tertiary);
-  font-size: 12px;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
 }
 
 .hero-resume-icon {
@@ -248,28 +231,25 @@
 }
 
 .hero-resume-link {
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   font-weight: 500;
-  padding: 4px 6px;
+  text-decoration: none;
+  padding: 2px 4px;
   border-radius: 4px;
-  transition: color var(--transition-fast), background var(--transition-fast);
-  min-height: 32px;
-  display: inline-flex;
-  align-items: center;
+  transition: color 0.15s ease;
 }
 
 .hero-resume-link:hover {
-  color: var(--color-accent-secondary);
-  background: rgba(0, 229, 255, 0.08);
+  color: #ffffff;
 }
 
 .hero-resume-divider {
   color: var(--color-text-tertiary);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* --------------------------------------------------------------------------
-   Right Column: Profile Card (Click-to-Flip 3D Identity Card)
+   Right Column: Approved 4:5 Squircle Professional Portrait
    -------------------------------------------------------------------------- */
 .hero-visual {
   display: flex;
@@ -280,451 +260,88 @@
   z-index: 2;
 }
 
-/* Mobile natural stacking: keep photo prominent without consuming entire screen */
-@media (max-width: 767px) {
-  .hero-visual {
-    order: -1;
-    margin-bottom: var(--space-8);
-  }
-}
-
-.profile-card-container {
+.hero-portrait-container {
   position: relative;
   width: 100%;
-  max-width: 330px;
+  max-width: 350px;
   margin: 0 auto;
-  perspective: 1200px;
-  cursor: pointer;
-  outline: none;
-  border-radius: 24px;
-  transition: transform var(--transition-medium);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-@media (max-width: 767px) {
-  .profile-card-container {
-    max-width: 250px;
-    border-radius: 20px;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .profile-card-container {
-    max-width: 280px;
+  .hero-portrait-container {
+    max-width: 290px;
   }
-}
-
-.profile-card-container:focus-visible {
-  outline: 2px solid var(--color-accent-secondary);
-  outline-offset: 4px;
-}
-
-@media (hover: hover) {
-  .profile-card-container:hover {
-    transform: translateY(-4px);
-  }
-}
-
-/* Inner 3D Rotation Mechanism */
-.profile-card-inner {
-  position: relative;
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
-  border-radius: inherit;
-}
-
-.profile-card-container.flipped .profile-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Dual Card Faces (Front & Back) */
-.profile-card-front,
-.profile-card-back {
-  width: 100%;
-  border-radius: inherit;
-  background: rgba(16, 16, 22, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow:
-    0 20px 48px -15px rgba(0, 0, 0, 0.8),
-    0 0 35px -12px rgba(138, 43, 226, 0.18),
-    0 0 20px -8px rgba(0, 229, 255, 0.12);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transition: border-color var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 @media (max-width: 767px) {
-  .profile-card-front {
-    padding: 10px;
+  .hero-portrait-container {
+    max-width: 260px;
+    margin-top: 8px;
   }
 }
 
-@media (hover: hover) {
-  .profile-card-container:hover .profile-card-front,
-  .profile-card-container:hover .profile-card-back {
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow:
-      0 26px 54px -15px rgba(0, 0, 0, 0.9),
-      0 0 45px -8px rgba(138, 43, 226, 0.26),
-      0 0 24px -4px rgba(0, 229, 255, 0.18);
-  }
-}
-
-.profile-card-front {
-  position: relative;
-  transform: rotateY(0deg);
-}
-
-/* Back Face Positioned Over Front Face (Zero Layout Shift) */
-.profile-card-back {
+/* Extremely subtle ambient backlight */
+.hero-portrait-aura {
   position: absolute;
-  inset: 0;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 22px 20px;
-}
-
-@media (max-width: 767px) {
-  .profile-card-back {
-    padding: 16px 14px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .profile-card-back {
-    padding: 18px 16px;
-  }
-}
-
-/* Subtle Cyan/Purple Ambient Aura behind Card */
-.profile-card-aura {
-  position: absolute;
-  top: -16px;
-  left: -16px;
-  right: -16px;
-  bottom: -16px;
-  background:
-    radial-gradient(circle at 25% 20%, rgba(138, 43, 226, 0.18) 0%, transparent 60%),
-    radial-gradient(circle at 75% 80%, rgba(0, 229, 255, 0.14) 0%, transparent 60%);
+  inset: -10px;
   border-radius: 32px;
-  filter: blur(24px);
-  z-index: -1;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 229, 255, 0.07) 0%,
+    rgba(138, 43, 226, 0.05) 50%,
+    transparent 75%
+  );
+  filter: blur(20px);
   pointer-events: none;
+  z-index: -1;
 }
 
-/* Photo Frame (~4:5 natural aspect ratio) */
-.profile-photo-frame {
+/* 4:5 Squircle Photo Frame */
+.hero-portrait-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
-  background: #0d0d12;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0d0e13;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 
+    0 20px 48px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  transition: border-color 0.3s ease;
 }
 
-@media (max-width: 767px) {
-  .profile-photo-frame {
-    border-radius: 14px;
-  }
+.hero-portrait-frame:hover {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.profile-photo {
+.hero-portrait-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 12%;
+  object-position: center 14%;
   display: block;
 }
 
-/* Bottom fade for smooth integration into card base */
-.profile-photo-fade {
+/* Subtle bottom fade to blend with card floor */
+.hero-portrait-fade {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 32%;
-  background: linear-gradient(to top, rgba(14, 14, 18, 0.95) 0%, rgba(14, 14, 18, 0.4) 30%, transparent 100%);
+  height: 24%;
+  background: linear-gradient(to top, rgba(13, 14, 19, 0.7) 0%, transparent 100%);
   pointer-events: none;
 }
 
-/* Photo In-frame Verification Tag */
-.profile-photo-badge {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(10, 10, 14, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  letter-spacing: 0.02em;
-}
-
-.profile-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent-secondary);
-  box-shadow: 0 0 6px var(--color-accent-secondary);
-}
-
-/* Photo In-frame Flip Cue */
-.profile-photo-flip-cue {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(10, 10, 14, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 4px 9px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-accent-secondary);
-  letter-spacing: 0.02em;
-  transition: all var(--transition-fast);
-}
-
-@media (hover: hover) {
-  .profile-card-container:hover .profile-photo-flip-cue {
-    background: rgba(0, 229, 255, 0.15);
-    border-color: rgba(0, 229, 255, 0.35);
-    color: #ffffff;
-  }
-}
-
-/* Profile Card Footer (Front) */
-.profile-card-footer {
-  padding: 12px 4px 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.profile-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  padding-bottom: 2px;
-}
-
-.profile-meta-role {
-  font-weight: 500;
-  color: var(--color-text-primary);
-  font-size: 12px;
-}
-
-.profile-meta-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--color-text-tertiary);
-  font-size: 11px;
-}
-
-.profile-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.profile-tag {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--color-text-secondary);
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 3px 8px;
-  border-radius: 6px;
-  transition: all var(--transition-fast);
-}
-
-.profile-tag:hover {
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--color-text-primary);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
 /* --------------------------------------------------------------------------
-   Back Face: Professional Identity Card Styling
-   -------------------------------------------------------------------------- */
-.profile-back-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.profile-back-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-text-tertiary);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-.profile-chip-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--color-accent-secondary);
-}
-
-.profile-back-flip-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--color-accent-secondary);
-  background: rgba(0, 229, 255, 0.08);
-  border: 1px solid rgba(0, 229, 255, 0.2);
-  padding: 3px 9px;
-  border-radius: 100px;
-  transition: all var(--transition-fast);
-}
-
-@media (hover: hover) {
-  .profile-card-container:hover .profile-back-flip-cue {
-    background: rgba(0, 229, 255, 0.18);
-    color: #ffffff;
-  }
-}
-
-.profile-back-body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: auto 0;
-  text-align: left;
-  width: 100%;
-}
-
-.profile-back-name {
-  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 4px;
-}
-
-.profile-back-role {
-  font-size: clamp(0.925rem, 1.8vw, 1.05rem);
-  font-weight: 500;
-  color: var(--color-accent-secondary);
-  letter-spacing: 0.01em;
-  margin-bottom: 8px;
-}
-
-.profile-back-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--color-text-tertiary);
-  margin-bottom: 14px;
-}
-
-.profile-back-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(0, 229, 255, 0.3) 0%, rgba(138, 43, 226, 0.3) 60%, transparent 100%);
-  margin-bottom: 14px;
-}
-
-.profile-back-focus {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-
-.profile-focus-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-text-tertiary);
-  margin-bottom: 5px;
-}
-
-.profile-focus-text {
-  font-size: 12.5px;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  line-height: 1.5;
-}
-
-.profile-back-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11.5px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  width: 100%;
-}
-
-.profile-back-availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--color-text-secondary);
-  font-size: 11.5px;
-}
-
-.profile-back-hint {
-  font-size: 10.5px;
-  color: var(--color-text-tertiary);
-  letter-spacing: 0.02em;
-}
-
-/* --------------------------------------------------------------------------
-   Accessibility & Reduced Motion
+   Accessibility: Reduced Motion
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-name,
-  .hero-role-title,
-  .hero-tagline,
-  .hero-subtitle,
-  .hero-cta-wrapper,
-  .hero-visual,
-  .profile-card-container,
-  .profile-card-inner,
-  .profile-card-front,
-  .profile-card-back {
-    animation: none !important;
+  .hero-btn-primary,
+  .hero-btn-secondary,
+  .hero-resume-link,
+  .hero-portrait-frame {
     transition: none !important;
     transform: none !important;
   }

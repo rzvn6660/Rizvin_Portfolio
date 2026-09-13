@@ -1,46 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import AuroraBackground from './AuroraBackground';
-import { Download, ArrowRight, MapPin, RotateCw } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import './Hero.css';
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleCardFlip = () => {
-    setIsFlipped(prev => !prev);
-  };
-
-  const handleCardKeyDown = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleCardFlip();
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.1,
-        delayChildren: shouldReduceMotion ? 0 : 0.15
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+        delayChildren: shouldReduceMotion ? 0 : 0.05
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 18 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 12 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 80, damping: 20 }
+      transition: { 
+        duration: shouldReduceMotion ? 0 : 0.35, 
+        ease: [0.16, 1, 0.3, 1] 
+      }
     }
   };
 
@@ -49,37 +40,36 @@ export default function Hero() {
       <AuroraBackground />
       <div className="container hero-container">
 
-        {/* Left Column: Identity, Positioning & CTAs */}
+        {/* Left Column: Identity, Positioning & Primary CTAs */}
         <motion.div
           className="hero-content"
           variants={containerVariants}
           initial="hidden"
           animate={mounted ? "visible" : "hidden"}
         >
-          {/* Availability Status Badge */}
-          <motion.div variants={itemVariants} className="hero-status-pill">
-            <span className="status-dot pulse" aria-hidden="true" />
-            <span className="status-pill-text">Available for AI Roles · India & UAE</span>
-          </motion.div>
-
-          {/* Prominent Name & Title */}
+          {/* Main Identity: Dominant Name & Role */}
           <motion.div variants={itemVariants} className="hero-identity-group">
             <h1 className="hero-name">Mohammed Rizvin MK</h1>
             <p className="hero-role-title">AI & Data Science Engineer</p>
           </motion.div>
 
-          {/* Engineering Value Proposition */}
-          <motion.h2 variants={itemVariants} className="hero-tagline">
-            Architecting <span className="text-gradient">intelligent systems</span><br />
-            and scalable <span className="text-gradient-primary">AI pipelines.</span>
-          </motion.h2>
+          {/* Core Technical Positioning */}
+          <motion.div variants={itemVariants} className="hero-positioning" aria-label="Core AI specializations">
+            <span>Generative AI</span>
+            <span className="hero-bullet" aria-hidden="true">·</span>
+            <span>AI Agents</span>
+            <span className="hero-bullet" aria-hidden="true">·</span>
+            <span>Speech AI</span>
+            <span className="hero-bullet" aria-hidden="true">·</span>
+            <span>Multimodal AI</span>
+          </motion.div>
 
-          {/* Technical Positioning Statement */}
-          <motion.p variants={itemVariants} className="hero-subtitle">
-            Specializing in Large Language Models, autonomous agent orchestration, and multimodal speech recognition. Building robust inference pipelines and driving product innovation from research to production.
+          {/* High-Impact Value Statement */}
+          <motion.p variants={itemVariants} className="hero-description">
+            Designing and deploying production-grade AI systems, autonomous agent workflows, and multilingual speech pipelines from research to scalable deployment.
           </motion.p>
 
-          {/* Prioritized CTA Hierarchy */}
+          {/* Prioritized Actions & Secondary Resume Access */}
           <motion.div variants={itemVariants} className="hero-cta-wrapper">
             <div className="hero-primary-actions">
               <a href="#projects" className="btn btn-primary hero-btn-primary">
@@ -91,10 +81,10 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Consolidated Dual-Region Resume Control */}
+            {/* Clean, Non-Distracting Resume Access */}
             <div className="hero-resume-control" role="group" aria-label="Resume downloads by region">
               <span className="hero-resume-label">
-                <Download size={14} className="hero-resume-icon" aria-hidden="true" />
+                <Download size={13} className="hero-resume-icon" aria-hidden="true" />
                 <span>Resume:</span>
               </span>
               <div className="hero-resume-links">
@@ -118,117 +108,32 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Elevated Engineering Profile Card (Click-to-Flip) */}
+        {/* Right Column: Approved 4:5 Squircle Professional Portrait */}
         <motion.div
           className="hero-visual"
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ 
+            duration: shouldReduceMotion ? 0 : 0.45, 
+            delay: shouldReduceMotion ? 0 : 0.1, 
+            ease: [0.16, 1, 0.3, 1] 
+          }}
         >
-          <div
-            className={`profile-card-container ${isFlipped ? 'flipped' : ''}`}
-            onClick={handleCardFlip}
-            onKeyDown={handleCardKeyDown}
-            role="button"
-            tabIndex={0}
-            aria-label={isFlipped ? "Flip to Mohammed Rizvin MK portrait view" : "Flip to Mohammed Rizvin MK professional identity card view"}
-            aria-pressed={isFlipped}
-          >
-            {/* Ambient Backlight Glow stays grounded outside 3D rotation */}
-            <div className="profile-card-aura" aria-hidden="true" />
+          <div className="hero-portrait-container">
+            {/* Extremely subtle ambient glow */}
+            <div className="hero-portrait-aura" aria-hidden="true" />
 
-            <div className="profile-card-inner">
-              {/* FRONT FACE: Authentic Professional Portrait Card */}
-              <div className="profile-card-front">
-                {/* Squircle Photo Frame (~4:5 ratio) */}
-                <div className="profile-photo-frame">
-                  <img
-                    src="/profile.jpg"
-                    alt="Mohammed Rizvin MK - AI & Data Science Engineer"
-                    className="profile-photo"
-                    width="853"
-                    height="1024"
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <div className="profile-photo-fade" aria-hidden="true" />
-
-                  {/* Subtle In-frame Verification Tag */}
-                  <div className="profile-photo-badge" aria-hidden="true">
-                    <span className="profile-badge-dot" />
-                    <span>AI Systems</span>
-                  </div>
-
-                  {/* Subtle Flip Hint Tag */}
-                  <div className="profile-photo-flip-cue" aria-hidden="true">
-                    <RotateCw size={11} />
-                    <span>ID Card</span>
-                  </div>
-                </div>
-
-                {/* Profile Card Footer / Technical Credibility */}
-                <div className="profile-card-footer">
-                  <div className="profile-card-meta">
-                    <span className="profile-meta-role">AI & Data Science Engineer</span>
-                    <span className="profile-meta-location">
-                      <MapPin size={12} aria-hidden="true" />
-                      India · UAE
-                    </span>
-                  </div>
-
-                  <div className="profile-card-tags" aria-label="Core AI specializations">
-                    <span className="profile-tag">LLMs & Agents</span>
-                    <span className="profile-tag">Speech AI</span>
-                    <span className="profile-tag">FastAPI</span>
-                    <span className="profile-tag">PyTorch</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* BACK FACE: Clean Professional Identity Card */}
-              <div className="profile-card-back" aria-hidden={!isFlipped}>
-                {/* Top Bar: Monogram & Return Cue */}
-                <div className="profile-back-header">
-                  <div className="profile-back-chip">
-                    <span className="profile-chip-dot" aria-hidden="true" />
-                    <span>ID // AI ENGINEERING</span>
-                  </div>
-                  <div className="profile-back-flip-cue" aria-hidden="true">
-                    <RotateCw size={11} />
-                    <span>Photo</span>
-                  </div>
-                </div>
-
-                {/* Center Identity */}
-                <div className="profile-back-body">
-                  <h3 className="profile-back-name">Mohammed Rizvin MK</h3>
-                  <p className="profile-back-role">AI & Data Science Engineer</p>
-
-                  <div className="profile-back-location">
-                    <MapPin size={12} aria-hidden="true" />
-                    <span>India · UAE</span>
-                  </div>
-
-                  <div className="profile-back-divider" aria-hidden="true" />
-
-                  {/* Short Focus Line */}
-                  <div className="profile-back-focus">
-                    <span className="profile-focus-label">Core Focus</span>
-                    <p className="profile-focus-text">
-                      Generative AI · AI Agents · Speech AI · Multimodal AI
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom Bar: Availability & Hint */}
-                <div className="profile-back-footer">
-                  <div className="profile-back-availability">
-                    <span className="status-dot pulse" aria-hidden="true" />
-                    <span>Available for AI Roles</span>
-                  </div>
-                  <span className="profile-back-hint" aria-hidden="true">Click to flip</span>
-                </div>
-              </div>
+            <div className="hero-portrait-frame">
+              <img
+                src="/profile.jpg"
+                alt="Mohammed Rizvin MK - AI & Data Science Engineer"
+                className="hero-portrait-img"
+                width="853"
+                height="1024"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="hero-portrait-fade" aria-hidden="true" />
             </div>
           </div>
         </motion.div>
