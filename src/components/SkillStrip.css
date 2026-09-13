@@ -1,31 +1,194 @@
-.skill-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8);
-  justify-content: center;
+/* ==========================================================================
+   Technical Focus (#focus) Section
+   ========================================================================== */
+
+.technical-focus-section {
+  scroll-margin-top: 84px;
+  position: relative;
+  z-index: 2;
+  padding: 64px 0;
 }
 
-@media (min-width: 768px) {
-  .skill-strip {
-    justify-content: center;
+@media (min-width: 1024px) {
+  .technical-focus-section {
+    padding: 80px 0 96px;
   }
 }
 
-.skill-chip {
-  padding: 8px 16px;
-  border-radius: 100px;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity var(--transition-medium), transform var(--transition-medium);
+/* --------------------------------------------------------------------------
+   Grid Architecture
+   -------------------------------------------------------------------------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-20);
+  align-items: stretch;
 }
 
-.skill-strip.in-view .skill-chip {
+/* Tablet (768px - 1023px): Core AI takes full width, Frameworks & Backend split */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-20);
+  }
+
+  .skills-category-card:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop (1024px+): 3 equal, balanced category cards */
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Category Card
+   -------------------------------------------------------------------------- */
+.skills-category-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-24);
+  min-height: 240px;
+  height: 100%;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(16, 16, 22, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-medium);
+}
+
+@media (min-width: 1024px) {
+  .skills-category-card {
+    padding: var(--space-28, 28px);
+  }
+}
+
+.skills-grid.in-view .skills-category-card {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: var(--card-delay, 0ms);
 }
 
-.skill-chip:hover {
-  border-color: var(--color-accent-primary);
-  background: var(--color-bg-surface-hover);
-  color: #fff;
+@media (hover: hover) and (pointer: fine) {
+  .skills-category-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 16px 36px -10px rgba(0, 0, 0, 0.6),
+      0 0 24px -10px rgba(0, 229, 255, 0.08);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Category Header
+   -------------------------------------------------------------------------- */
+.category-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-16);
+  margin-bottom: var(--space-20);
+}
+
+.category-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.category-icon-core-ai {
+  color: var(--color-accent-secondary);
+  background: rgba(0, 229, 255, 0.07);
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+.category-icon-frameworks-tooling {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.07);
+  border-color: rgba(192, 132, 252, 0.2);
+}
+
+.category-icon-backend-infrastructure {
+  color: var(--color-status-shipped);
+  background: rgba(77, 184, 255, 0.07);
+  border-color: rgba(77, 184, 255, 0.2);
+}
+
+.category-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.category-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Skill Pills Group
+   -------------------------------------------------------------------------- */
+.skills-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-12);
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 0.815rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-pill:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .skills-category-card,
+  .skill-pill {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
 }
