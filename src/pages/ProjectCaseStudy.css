@@ -1,6 +1,18 @@
+/* ==========================================================================
+   Project Case Study - Professional Engineering Narrative
+   ========================================================================== */
+
 .page-padding {
-  padding-top: var(--space-64);
+  padding-top: 5.5rem;
+  padding-bottom: 4rem;
   min-height: 100vh;
+}
+
+@media (max-width: 640px) {
+  .page-padding {
+    padding-top: 6.75rem;
+    padding-bottom: 3rem;
+  }
 }
 
 .case-study-container {
@@ -10,12 +22,17 @@
   gap: var(--space-32);
 }
 
+/* --------------------------------------------------------------------------
+   Case Study Header
+   -------------------------------------------------------------------------- */
 .case-study-header {
   padding: var(--space-24);
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.03), rgba(138, 43, 226, 0.05));
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
 }
 
 @media (min-width: 768px) {
@@ -34,10 +51,12 @@
   gap: 8px;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .back-link:hover {
-  color: var(--color-accent-primary);
+  color: var(--color-text-primary);
 }
 
 .case-study-title-group {
@@ -47,33 +66,40 @@
 }
 
 .cs-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
 }
 
 @media (min-width: 768px) {
   .cs-title {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
   }
 }
 
 .cs-tagline {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
   color: var(--color-text-secondary);
-  max-width: 700px;
+  max-width: 720px;
 }
 
 .cs-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-8);
-  margin: var(--space-8) 0;
+  gap: 6px;
+  margin: 0.5rem 0;
 }
 
 .cs-tech-chip {
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-  font-size: 0.875rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
 }
 
 .cs-links {
@@ -88,32 +114,29 @@
   cursor: not-allowed;
 }
 
-/* Content */
-.cs-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-32);
+/* --------------------------------------------------------------------------
+   Core Capabilities Panel (ORMA AI)
+   -------------------------------------------------------------------------- */
+.cs-capabilities-panel {
+  padding: 1.5rem;
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
 }
 
-.cs-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-12);
+.cs-capabilities-panel h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-border-subtle);
-  padding-bottom: var(--space-8);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.5rem;
 }
 
-.cs-section p {
-  color: var(--color-text-secondary);
-  font-size: 1.125rem;
-}
-
-/* Status Grid for ORMA AI */
 .status-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--space-12);
-  padding: var(--space-16);
 }
 
 .status-item {
@@ -121,14 +144,15 @@
   flex-direction: column;
   gap: 4px;
   padding: var(--space-12);
-  background: rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: var(--border-radius-sm);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .item-label {
   font-weight: 500;
   font-size: 0.875rem;
+  color: var(--color-text-primary);
 }
 
 .item-status {
@@ -139,28 +163,66 @@
 .status-in-progress { color: #4db8ff; }
 .status-planned { color: var(--color-text-tertiary); }
 
-/* Decisions List */
-.decisions-list {
+/* --------------------------------------------------------------------------
+   Content Sections
+   -------------------------------------------------------------------------- */
+.cs-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16);
+  gap: var(--space-32);
 }
 
-.decision-card {
-  padding: var(--space-16);
+.cs-section h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: var(--space-12);
+  color: var(--color-text-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: var(--space-8);
+  letter-spacing: -0.01em;
 }
 
-.decision-title {
-  font-size: 1.125rem;
-  margin-bottom: var(--space-8);
-  color: var(--color-accent-secondary);
+.cs-section p {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 
-.decision-reasoning {
-  font-size: 1rem !important;
+/* --------------------------------------------------------------------------
+   Architecture Diagram & Pipeline Flow
+   -------------------------------------------------------------------------- */
+.diagram-image-container {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0b0c10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
 }
 
-/* Diagram Placeholder */
+.architecture-image {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  background: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .diagram-image-container {
+    padding: 8px;
+    margin: 1rem 0;
+  }
+  .architecture-image {
+    max-height: 380px;
+  }
+}
+
 .diagram-placeholder {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -169,7 +231,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
 .diagram-content {
@@ -188,16 +252,17 @@
 
 .d-node {
   padding: 12px 24px;
-  border: 1px solid var(--color-accent-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--border-radius-sm);
-  background: rgba(138, 43, 226, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   font-family: var(--font-mono);
   font-size: 0.75rem;
 }
 
 .d-node.core {
-  border-color: var(--color-accent-secondary);
-  background: rgba(0, 229, 255, 0.1);
+  border-color: #00e5ff;
+  background: rgba(0, 229, 255, 0.08);
+  color: #00e5ff;
 }
 
 .d-line {
@@ -206,11 +271,99 @@
   background: var(--color-border-subtle);
 }
 
-/* Footer Next link */
+/* Architecture Pipeline Flow */
+.architecture-pipeline {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pipeline-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.pipeline-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pipeline-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #00e5ff;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-text {
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Engineering Decisions
+   -------------------------------------------------------------------------- */
+.decisions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.decision-card {
+  padding: 1.25rem;
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-sm);
+}
+
+.decision-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+  color: var(--color-text-primary);
+}
+
+.decision-reasoning {
+  font-size: 0.95rem !important;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Footer Next Project Link
+   -------------------------------------------------------------------------- */
 .cs-footer {
   margin-top: var(--space-32);
   padding-top: var(--space-32);
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .next-project-card {
@@ -220,45 +373,49 @@
   text-align: center;
   align-items: center;
   gap: var(--space-8);
-  position: relative;
-  overflow: hidden;
+  background: #0b0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.next-project-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .next-label {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  color: var(--color-text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .next-title {
   font-size: 1.5rem;
+  font-weight: 600;
   color: var(--color-text-primary);
 }
 
 .next-icon {
-  color: var(--color-accent-primary);
-  transition: transform var(--transition-fast);
+  color: var(--color-text-secondary);
+  transition: transform var(--transition-fast), color 0.2s ease;
 }
 
 .next-project-card:hover .next-icon {
-  transform: translateX(8px);
+  transform: translateX(6px);
+  color: var(--color-text-primary);
 }
 
-.diagram-image-container {
-  width: 100%;
-  margin: var(--space-16) 0;
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  border: 1px solid var(--color-border-subtle);
-  background: rgba(255, 255, 255, 0.02);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.architecture-image {
-  width: 100%;
-  height: auto;
-  display: block;
+/* --------------------------------------------------------------------------
+   Accessibility: Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .next-project-card,
+  .next-icon,
+  .back-link {
+    transition: none !important;
+    transform: none !important;
+  }
 }

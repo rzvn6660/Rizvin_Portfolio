@@ -71,8 +71,8 @@ export default function ProjectCaseStudy() {
         </div>
 
         {project.progressItems && (
-          <div className="cs-section glass-panel">
-            <h2>Development Status</h2>
+          <div className="cs-capabilities-panel">
+            <h2>Core Capabilities (Beta 1)</h2>
             <div className="status-grid">
               {project.progressItems.map(item => (
                 <div key={item.label} className="status-item">
@@ -105,7 +105,7 @@ export default function ProjectCaseStudy() {
                 <img src={project.architectureImage} alt={`${project.title} Architecture Diagram`} className="architecture-image" />
               </div>
             ) : (
-              <div className="diagram-placeholder glass-panel">
+              <div className="diagram-placeholder">
                 <div className="diagram-content">
                   <span className="text-mono" style={{ color: 'var(--color-text-tertiary)' }}>
                     System Architecture Diagram<br />(Visual Placeholder)
@@ -121,7 +121,21 @@ export default function ProjectCaseStudy() {
               </div>
             )}
             
-            <p>{project.architectureDescription}</p>
+            {project.architectureSteps ? (
+              <div className="architecture-pipeline">
+                <h3 className="pipeline-title text-mono">System Execution Pipeline</h3>
+                <ol className="pipeline-steps">
+                  {project.architectureSteps.map((step, idx) => (
+                    <li key={idx} className="pipeline-step-item">
+                      <span className="step-number text-mono">{String(idx + 1).padStart(2, '0')}</span>
+                      <span className="step-text">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : (
+              <p>{project.architectureDescription}</p>
+            )}
           </section>
 
           <section className="cs-section">
