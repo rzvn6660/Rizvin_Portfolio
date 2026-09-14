@@ -12,7 +12,7 @@ export const certifications = [
   {
     id: 2,
     title: 'Introduction to Generative AI',
-    issuer: 'Google',
+    issuer: 'Google Cloud',
     date: 'May 2026',
     credentialId: '24249365',
     description: "Completed Google's Introduction to Generative AI course, covering the fundamentals of generative AI, large language models, and practical AI applications.",

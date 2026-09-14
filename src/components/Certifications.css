@@ -1,3 +1,7 @@
+#certifications {
+  scroll-margin-top: 84px;
+}
+
 .certifications-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -10,7 +14,7 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .certifications-grid {
     grid-template-columns: repeat(3, 1fr);
   }
