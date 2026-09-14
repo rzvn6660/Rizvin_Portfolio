@@ -58,7 +58,7 @@
 .desktop-nav {
   display: none;
   align-items: center;
-  gap: var(--space-32); /* 32px spacing */
+  gap: clamp(var(--space-16), 1.8vw, var(--space-32));
 }
 
 .nav-link {

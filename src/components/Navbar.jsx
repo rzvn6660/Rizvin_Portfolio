@@ -26,6 +26,7 @@ export default function Navbar() {
           <a href="#focus" onClick={closeMenu} className="nav-link">Focus</a>
           <a href="#projects" onClick={closeMenu} className="nav-link">Projects</a>
           <a href="#github" onClick={closeMenu} className="nav-link">GitHub</a>
+          <a href="#experience" onClick={closeMenu} className="nav-link">Experience</a>
           <a href="#certifications" onClick={closeMenu} className="nav-link">Certifications</a>
         </>
       ) : (

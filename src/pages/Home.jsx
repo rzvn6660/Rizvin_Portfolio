@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import SkillStrip from '../components/SkillStrip';
 import ProjectCard from '../components/ProjectCard';
 import GitHubSection from '../components/GitHubSection';
+import ExperienceEducation from '../components/ExperienceEducation';
 import Certifications from '../components/Certifications';
 import ConnectResearch from '../components/ConnectResearch';
 import Contact from '../components/Contact';
@@ -37,6 +38,7 @@ export default function Home() {
       </section>
 
       <GitHubSection />
+      <ExperienceEducation />
       <Certifications />
       <ConnectResearch />
       <Contact />
